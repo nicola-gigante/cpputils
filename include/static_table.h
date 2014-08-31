@@ -29,7 +29,10 @@
 namespace tbl {
     namespace details {
         /*
-         * Stripped down version of integer_sequence from C++14
+         * Stripped down version of integer_sequence from C++14.
+         * Note: I don't use the index_sequence in std14/ 
+         *       because I want each header in this little 
+         *       library to be completely stand-alone
          */
         template<size_t ...>
         struct index_sequence { };
