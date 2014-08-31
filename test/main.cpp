@@ -15,6 +15,7 @@
  */
 
 #include "static_table.h"
+#include "std14/memory"
 
 #include <iostream>
 
@@ -26,13 +27,22 @@ constexpr int sum(int a, int b) { return a + b; }
 constexpr auto a = map(x2, irange<int, 0, 10>());
 constexpr auto result = foldr(sum, 0, a);
 
-int main(int argc, const char * argv[])
-{
+void test_table() {
     for (auto i : a) {
         std::cout << i << "\n";
     }
     
     std::cout << result << "\n";
+}
+
+void test_std14() {
+    auto i = std14::make_unique<int>(42);
+}
+
+int main(int argc, const char * argv[])
+{
+    test_table();
+    test_std14();
     
     return 0;
 }

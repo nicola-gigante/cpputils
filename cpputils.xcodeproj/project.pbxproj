@@ -28,6 +28,11 @@
 		C9ABB91D19AC6C96009FBA83 /* has_member.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = has_member.h; sourceTree = "<group>"; };
 		C9ABB91E19AC6E8C009FBA83 /* static_table.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = static_table.h; sourceTree = "<group>"; };
 		C9ABB91F19AC80E3009FBA83 /* TODO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.md; sourceTree = "<group>"; };
+		C9E1D7E619B3203F0058E4C4 /* memory */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = memory; sourceTree = "<group>"; };
+		C9E1D7E719B3203F0058E4C4 /* type_traits */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = type_traits; sourceTree = "<group>"; };
+		C9E1D7E819B3203F0058E4C4 /* utility */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = utility; sourceTree = "<group>"; };
+		C9E1D7E919B321510058E4C4 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		C9E1D7EA19B321510058E4C4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +49,8 @@
 		C9ABB90519AC6B69009FBA83 = {
 			isa = PBXGroup;
 			children = (
+				C9E1D7E919B321510058E4C4 /* LICENSE */,
+				C9E1D7EA19B321510058E4C4 /* README.md */,
 				C9ABB91F19AC80E3009FBA83 /* TODO.md */,
 				C9ABB91C19AC6C85009FBA83 /* include */,
 				C9ABB91019AC6B6A009FBA83 /* test */,
@@ -71,11 +78,22 @@
 		C9ABB91C19AC6C85009FBA83 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				C9E1D7E519B3203F0058E4C4 /* std14 */,
 				C9ABB91D19AC6C96009FBA83 /* has_member.h */,
 				C9ABB91E19AC6E8C009FBA83 /* static_table.h */,
 			);
 			path = include;
 			sourceTree = SOURCE_ROOT;
+		};
+		C9E1D7E519B3203F0058E4C4 /* std14 */ = {
+			isa = PBXGroup;
+			children = (
+				C9E1D7E619B3203F0058E4C4 /* memory */,
+				C9E1D7E719B3203F0058E4C4 /* type_traits */,
+				C9E1D7E819B3203F0058E4C4 /* utility */,
+			);
+			path = std14;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -139,7 +157,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -169,7 +187,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-std=c++1y",
+				);
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -178,7 +199,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -195,6 +216,8 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = fast;
+				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -202,7 +225,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-std=c++1y",
+				);
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -242,6 +268,7 @@
 				C9ABB91919AC6B6A009FBA83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
