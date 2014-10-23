@@ -13,7 +13,7 @@ to check.
 
 The macro is called ```DECLARE_HAS_MEMBER_TRAIT``` and given a name, 
 e.g. ```get```, it generates a trait class called, for instance 
-```has_member_get```. 
+```has_member_get``` . 
 
 The trait wants a signature as the template parameter and provides a static 
 boolean constant ```value``` which will be true if a member with the given 
@@ -21,8 +21,7 @@ name exists and is callable with the given signature.
 
 The macro also declares two tag ```struct```s called 
 ```has_member_<name>_tag``` and ```doesnt_have_<name>_tag```.
-The trait provides a typedef ```type``` which can be one of the two tag 
-```struct```s,
+The trait provides a typedef ```type``` which can be one of the two tag structs,
 useful for calling different implementation of a function with tag dispatching.
 
 ## static_table.h
