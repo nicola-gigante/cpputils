@@ -23,7 +23,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C910A8F61A3C5663003E046E /* compressed_pair.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = compressed_pair.h; sourceTree = "<group>"; };
 		C920055119FE68FC0077099B /* meta.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = meta.h; sourceTree = "<group>"; };
 		C946218E19FFC5480024FA6F /* string_view */ = {isa = PBXFileReference; lastKnownFileType = text; name = string_view; path = experimental/string_view; sourceTree = "<group>"; };
 		C946218F19FFDA150024FA6F /* array_view */ = {isa = PBXFileReference; lastKnownFileType = text; name = array_view; path = experimental/array_view; sourceTree = "<group>"; };
@@ -32,6 +31,7 @@
 		C9ABB91D19AC6C96009FBA83 /* has_member.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = has_member.h; sourceTree = "<group>"; };
 		C9ABB91E19AC6E8C009FBA83 /* static_table.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = static_table.h; sourceTree = "<group>"; };
 		C9ABB91F19AC80E3009FBA83 /* TODO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.md; sourceTree = "<group>"; };
+		C9AD92871A45C95300736AF9 /* array */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = array; sourceTree = "<group>"; };
 		C9E1D7E619B3203F0058E4C4 /* memory */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = memory; sourceTree = "<group>"; };
 		C9E1D7E719B3203F0058E4C4 /* type_traits */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = type_traits; sourceTree = "<group>"; };
 		C9E1D7E819B3203F0058E4C4 /* utility */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = utility; sourceTree = "<group>"; };
@@ -86,7 +86,6 @@
 				C9ABB91D19AC6C96009FBA83 /* has_member.h */,
 				C9ABB91E19AC6E8C009FBA83 /* static_table.h */,
 				C920055119FE68FC0077099B /* meta.h */,
-				C910A8F61A3C5663003E046E /* compressed_pair.h */,
 			);
 			path = include;
 			sourceTree = SOURCE_ROOT;
@@ -94,6 +93,7 @@
 		C9E1D7E519B3203F0058E4C4 /* std14 */ = {
 			isa = PBXGroup;
 			children = (
+				C9AD92871A45C95300736AF9 /* array */,
 				C9E1D7E619B3203F0058E4C4 /* memory */,
 				C9E1D7E719B3203F0058E4C4 /* type_traits */,
 				C9E1D7E819B3203F0058E4C4 /* utility */,
