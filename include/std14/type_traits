@@ -18,6 +18,9 @@
 #ifndef STD14_TYPE_TRAITS_H__
 #define STD14_TYPE_TRAITS_H__
 
+#include "utils/invoke.h"
+#include "utils/meta.h"
+
 #include <type_traits>
 
 #if __cplusplus > 201103
@@ -28,6 +31,29 @@ namespace std14 {
 
 using namespace std;
     
+// SFINAE-friendly std::result_of
+template<typename T, typename = void>
+struct result_of;
+    
+template<typename R, typename ...Args, typename _>
+struct result_of<R(Args...), _> { };
+    
+    namespace details {
+        template<typename ...Args>
+        using result_of_impl = decltype(utils::invoke(std::declval<Args>()...));
+    }
+        
+template<typename R, typename ...Args>
+struct result_of< R(Args...),
+                  utils::void_t<details::result_of_impl<R, Args...>>
+                >
+{
+    using type = details::result_of_impl<R, Args...>;
+};
+    
+template<typename ...Args>
+    using result_of_t = typename result_of<Args...>::type;
+   
 // Convenience alias templates for transformation type traits
 // const-volatile modifications:
 template <class T>
@@ -79,7 +105,7 @@ template <class T>
 template <class T>
     using add_pointer_t = typename std::add_pointer<T>::type;
 
-namespace aligned_storage_t_details {
+namespace details {
     
     template<size_t Len, size_t Align>
     std::integral_constant<size_t, Align>
@@ -95,7 +121,7 @@ namespace aligned_storage_t_details {
     
 // other transformations:
 template <std::size_t Len,
-          std::size_t Align = aligned_storage_t_details::default_align<Len>()>
+          std::size_t Align = details::default_align<Len>()>
     using aligned_storage_t = typename std::aligned_storage<Len, Align>::type;
 
 template <std::size_t Len, class... Types>
@@ -116,9 +142,6 @@ template <class... T>
 template <class T>
     using underlying_type_t = typename std::underlying_type<T>::type;
     
-template <class T>
-    using result_of_t = typename std::result_of<T>::type;
-
 }
 
 #endif // __cplusplus <= 201103

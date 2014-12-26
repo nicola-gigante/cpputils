@@ -109,33 +109,33 @@ functions, useful to compose complex SFINAE conditions.
 * The ```true_t``` type trait is similar to ```void_t```, but is a value
   type trait that always return ```true```, no matter what.
 
-## static_table.h
+## invoke.h
+This header provides two utilities that are useful when dealign with Callable
+objects, as defined by the standard.
 
-This header declares a couple of utility functions to help the creation of 
-instances of ```std::array``` at compile time. Given the limitations of C++11 
- ```constexpr``` functions and the lack of ```constexpr``` member functions in 
-the C++11 ```std::array```, the generation of compile-time tables for 
-precomputing values of any sort is much more difficult than how could be. 
-These little utilities can help by providing a mean to generate tables with 
-progressive indexes and transforming them in a functional way to create the 
-desired table.
+The ```invoke()``` function takes a callable object and any number of arguments
+and invoke it with them, following the definition of the Callable object from
+the C++ Standard. This means you can call functions, function objects, 
+pointers to member functions, and pointers to data members, with a uniform
+syntax. Moreover, you can invoke pointers to data members and pointers to 
+member functions using a reference, a pointer or any smart pointer as the instance.
 
-Provided functions are:
-- ```irange<T, Begin, End>()``` returns a sequence filled of values of type 
-  ```T``` in the range ```[Begin, End)```.
-- ```iota<T, N>()``` returns a sequence filled of values of type ```T``` in 
-  the range ```[0, End)```.
-- ```map(<function>, <sequence>)``` maps the function over the sequence, 
-  returning the mapped sequence.
-- ```foldr(<function>, <zero>, <sequence>)``` and 
-  ```foldl(<function>, <zero>, <sequence>)``` work exactly like the 
-  corresponding functions in any functional language. They accumulate from the 
-  right (or the left) the results of applying a binary function to the 
-  elements of the sequence, returning the accumulated result.
+The ```invokable()``` function builds on ```invoke()``` and wraps any Callable
+into a function object, which is useful as an alternative to ```std::bind``` to
+conveniently use pointers to data members or pointers to member functions.
 
-The result of ```irange()```, ```iota()```, and ```map()``` can be converted 
-to a ```std::array```, thus allowing to obtain the final compile-time computed 
-table.
+A little example:
+```cpp
+struct S {
+    int member = 42;
+};
+
+auto f = invokable(&S::member);
+
+S s;
+std::cout << f(s) << std::endl; // Prints '42'
+
+```
 
 ## std14 namespace
 
@@ -159,7 +159,7 @@ library-provided symbols out-of-the-box.
 Provided entities are:
 - ```std::make_unique``` in the ```<std14/memory>``` header
 - Type traits aliases (e.g. ```enable_if_t<>``` instead of ```enable_if<>```)
-  in ```<std14/type_traits>```
+  and SFINAE-friendly ```std::result_of``` in ```<std14/type_traits>```
 - ```std::integer_sequence``` and related facilities in the ```<std14/utility>```
   header.
 - ```std::experimental::string_view``` in the ```<std14/experimental/string_view>```

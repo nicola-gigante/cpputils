@@ -14,39 +14,20 @@
  * limitations under the License.
  */
 
-#include "static_table.h"
+#include "utils/has_member.h"
+#include "utils/meta.h"
+#include "utils/invoke.h"
 
-#include <iostream>
+#include <std14/array>
+#include <std14/memory>
+#include <std14/type_traits>
+#include <std14/utility>
+#include <std14/experimental/array_view>
+#include <std14/experimental/string_view>
 
-using namespace tbl;
-
-constexpr int x2(int n) { return n * 2; }
-constexpr int sum(int a, int b) { return a + b; }
-
-constexpr auto a1 = map<0, 10>(x2);
-constexpr auto a2 = map(x2, irange<int, 0, 10>());
-
-constexpr auto r1 = foldr(sum, 0, a1);
-constexpr auto r2 = foldr<0, 10>(sum, 0);
-constexpr auto r3 = foldr<0, 10>(sum, 0);
-
-void test_table() {
-    for (auto i : a1) {
-        std::cout << i << "\n";
-    }
-    
-    for (auto i : a2) {
-        std::cout << i << "\n";
-    }
-    
-    std::cout << r1 << "\n";
-    std::cout << r2 << "\n";
-    std::cout << r3 << "\n";
-}
-
-int main(int argc, const char * argv[])
+int main()
 {
-    test_table();
+    // TODO: Here we should really really test everything...
     
     return 0;
 }

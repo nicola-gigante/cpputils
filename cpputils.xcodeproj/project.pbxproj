@@ -23,13 +23,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C920055119FE68FC0077099B /* meta.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = meta.h; sourceTree = "<group>"; };
+		C920055119FE68FC0077099B /* meta.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = meta.h; path = utils/meta.h; sourceTree = "<group>"; };
 		C946218E19FFC5480024FA6F /* string_view */ = {isa = PBXFileReference; lastKnownFileType = text; name = string_view; path = experimental/string_view; sourceTree = "<group>"; };
 		C946218F19FFDA150024FA6F /* array_view */ = {isa = PBXFileReference; lastKnownFileType = text; name = array_view; path = experimental/array_view; sourceTree = "<group>"; };
+		C9AAE77E1A4DBCF80004C6EC /* invoke.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = invoke.h; path = utils/invoke.h; sourceTree = "<group>"; };
 		C9ABB90E19AC6B6A009FBA83 /* cpputils */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cpputils; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9ABB91A19AC6C76009FBA83 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = test/main.cpp; sourceTree = SOURCE_ROOT; };
-		C9ABB91D19AC6C96009FBA83 /* has_member.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = has_member.h; sourceTree = "<group>"; };
-		C9ABB91E19AC6E8C009FBA83 /* static_table.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = static_table.h; sourceTree = "<group>"; };
+		C9ABB91D19AC6C96009FBA83 /* has_member.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = has_member.h; path = utils/has_member.h; sourceTree = "<group>"; };
 		C9ABB91F19AC80E3009FBA83 /* TODO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.md; sourceTree = "<group>"; };
 		C9AD92871A45C95300736AF9 /* array */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = array; sourceTree = "<group>"; };
 		C9E1D7E619B3203F0058E4C4 /* memory */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = memory; sourceTree = "<group>"; };
@@ -53,8 +53,8 @@
 		C967FDC41A4C353C00CCB618 /* experimental */ = {
 			isa = PBXGroup;
 			children = (
-				C946218E19FFC5480024FA6F /* string_view */,
 				C946218F19FFDA150024FA6F /* array_view */,
+				C946218E19FFC5480024FA6F /* string_view */,
 			);
 			name = experimental;
 			sourceTree = "<group>";
@@ -93,8 +93,8 @@
 			children = (
 				C9E1D7E519B3203F0058E4C4 /* std14 */,
 				C9ABB91D19AC6C96009FBA83 /* has_member.h */,
-				C9ABB91E19AC6E8C009FBA83 /* static_table.h */,
 				C920055119FE68FC0077099B /* meta.h */,
+				C9AAE77E1A4DBCF80004C6EC /* invoke.h */,
 			);
 			path = include;
 			sourceTree = SOURCE_ROOT;
