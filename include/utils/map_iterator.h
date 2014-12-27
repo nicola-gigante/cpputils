@@ -26,6 +26,10 @@
 namespace utils {
 namespace details {
     
+    
+    template<typename It>
+    class map_iterator_sentinel_t;
+    
     /*
      * This class wraps any iterator by applying a given function to all the
      * elements of the range upon the invocation of the dereference operator
@@ -33,14 +37,21 @@ namespace details {
     template<typename It, typename F>
     class map_iterator : private invokable_t<F>
     {
-        It _it;
+        template<typename, typename>
+        friend
+        class map_iterator;
         
         using map_result_t = std14::result_of_t<F(typename std::iterator_traits<It>::reference)>;
 
         invokable_t<F>      &map()       { return *this; }
         invokable_t<F> const&map() const { return *this; }
         
+    private:
+        It _it;
+        
     public:
+        using base_iterator_type = It;
+        
         using value_type = std14::decay_t<map_result_t>;
         using pointer    = value_type *;
         using reference  = map_result_t;
@@ -49,7 +60,17 @@ namespace details {
         
     public:
         map_iterator(It iterator, F map)
-            : invokable_t<F>(map), _it(iterator) { }
+            : invokable_t<F>(std::move(map)), _it(std::move(iterator)) { }
+        
+        template<typename It2,
+                 REQUIRES(std::is_convertible< It2, It >::value)>
+        map_iterator(map_iterator<It2, F> it)
+            : invokable_t<F>(std::move(it.map())),
+              _it(std::move(it._it)) { }
+        
+        template<REQUIRES(std::is_default_constructible<F>::value)>
+        map_iterator(map_iterator_sentinel_t<It> sentinel)
+            : invokable_t<F>( F{} ), _it(std::move(sentinel._it)) { }
         
         map_iterator(map_iterator const&) = default;
         map_iterator(map_iterator     &&) = default;
@@ -189,9 +210,24 @@ namespace details {
         bool operator>=(map_iterator const& it) const {
             return _it >= it._it;
         }
+    };
+    
+    /*
+     * Partial specialization used as sentinel for end iterators in the
+     * single-argument overload of make_map_iterator
+     */
+    template<typename It>
+    class map_iterator_sentinel_t
+    {
+        template<typename, typename>
+        friend
+        class map_iterator;
+        
+    public:
+        map_iterator_sentinel_t(It it) : _it(std::move(it)) { }
         
     private:
-        
+        It _it;
     };
     
     /*
@@ -200,6 +236,11 @@ namespace details {
     template<typename It, typename F>
     map_iterator<It, F> make_map_iterator(It it, F f) {
         return map_iterator<It, F>(it, f);
+    }
+    
+    template<typename It>
+    map_iterator_sentinel_t<It> make_map_iterator(It it) {
+        return map_iterator_sentinel_t<It>(it);
     }
     
 } // namespace details
