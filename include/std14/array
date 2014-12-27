@@ -7,6 +7,10 @@
 // Source Licenses. See LICENSE.TXT for details.
 //
 //===----------------------------------------------------------------------===//
+//
+// Modified and adapted for the cpputils repository by Nicola Gigante
+//
+//===----------------------------------------------------------------------===//
 
 #ifndef CPPUTILS_ARRAY_H
 #define CPPUTILS_ARRAY_H
@@ -18,7 +22,7 @@
 #include <stdexcept>
 #include <cassert>
 
-#if cplusplus > 201103
+#if __cplusplus > 201103
 namespace std14 = std;
 #else
 
@@ -61,7 +65,6 @@ template <class T, size_t Size>
 struct array
 {
     // types:
-    typedef array                                 self;
     typedef T                                     value_type;
     typedef value_type&                           reference;
     typedef const value_type&                     const_reference;
