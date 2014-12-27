@@ -85,14 +85,14 @@ namespace details {
      */
     template<typename T, typename C, typename Obj>
     auto invoke(T (C::*m), Obj&& obj)
-        declreturn( (std::forward<Obj>(obj).*m) )
-    
+        declreturn( std::forward<Obj>(obj).*m )
+        
     /*
      * Pointers to members
      */
     template<typename T, typename C, typename Obj>
     auto invoke(T (C::*m), Obj* obj)
-        declreturn( (obj->*m) )
+        declreturn( obj->*m )
     
     
     template<typename T>
@@ -123,6 +123,9 @@ namespace details {
                                      >::type;
     };
     
+    template<typename T>
+    using invokable_t = typename invokable_type<T>::type;
+    
     /*
      * The invokable function wraps anything that is invokable by invoke()
      * into a function object, paying attention to preserve the emptyness of
@@ -130,7 +133,7 @@ namespace details {
      */
     template<typename T>
     auto invokable(T&& t)
-        declreturn( typename invokable_type<T>::type( std::forward<T>(t) ) )
+        declreturn( invokable_t<T>( std::forward<T>(t) ) )
     
     #undef declreturn
     
@@ -138,6 +141,7 @@ namespace details {
     
 using details::invoke;
 using details::invokable;
+using details::invokable_t;
     
 } // namespace utils
 

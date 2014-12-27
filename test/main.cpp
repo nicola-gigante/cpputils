@@ -17,6 +17,7 @@
 #include "utils/has_member.h"
 #include "utils/meta.h"
 #include "utils/invoke.h"
+#include "utils/map_iterator.h"
 
 #include <std14/array>
 #include <std14/memory>
