@@ -27,7 +27,7 @@
 
 // Note: this must stay on the same line.
 #define REQUIRES(...) \
-typename CPPUTILS_REQUIRES_FRESH = void, typename std::enable_if<::utils::details::true_t<CPPUTILS_REQUIRES_FRESH>::value && (__VA_ARGS__), int>::type = 0
+typename CPPUTILS_REQUIRES_FRESH = void, typename std::enable_if<::utils::details::true_t<CPPUTILS_REQUIRES_FRESH>::value && ::utils::details::all(__VA_ARGS__), int>::type = 0
 
 namespace utils {
     
@@ -39,33 +39,52 @@ namespace utils {
         template<typename T>
         using void_t = void;
 
+        template<typename T, bool Tb = T::value>
+        constexpr bool metapredicate() {
+            return Tb;
+        }
+        
+        template<bool B>
+        constexpr bool metapredicate() {
+            return B;
+        }
+        
         constexpr bool all() { return true; }
         
-        template<typename T, typename ...Args,
-                 REQUIRES(    std::is_same<T,    bool>::value),
-                 REQUIRES(all(std::is_same<Args, bool>::value...))>
-        bool all(T b, Args ...args)
+        template<typename ...Args>
+        constexpr
+        bool all(bool b, Args ...args)
         {
             return b && all(args...);
         }
         
-        template<typename T, typename ...Args>
-        constexpr bool same_type() {
-            return all(std::is_same<T, Args>::value...);
+        template<typename T, typename ...Args, bool Tb = T::value>
+        constexpr
+        bool all(T, Args ...args)
+        {
+            return Tb && all(args...);
         }
         
-        constexpr bool any() { return false; }
+        template<typename T, typename ...Args>
+        constexpr bool same_type() {
+            return all(std::is_same<T, Args>()...);
+        }
         
-        template<typename T, typename ...Args,
-                 REQUIRES(same_type<bool, T, Args...>())>
-        constexpr bool any(T b, Args ...args) {
-            return b || any(args...);
+        constexpr bool neg(bool b) { return not b; }
+        
+        template<typename T, bool Tb = T::value>
+        constexpr bool neg(T) { return not Tb; }
+        
+        template<typename ...Args>
+        constexpr bool any(Args ...args) {
+            return not all(neg(args)...);
         }
     }
     
     using details::true_t;
     using details::void_t;
     
+    using details::neg;
     using details::all;
     using details::any;
     
