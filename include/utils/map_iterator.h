@@ -63,12 +63,12 @@ namespace details {
             : invokable_t<F>(std::move(map)), _it(std::move(iterator)) { }
         
         template<typename It2,
-                 REQUIRES(std::is_convertible< It2, It >::value)>
+                 REQUIRES(std::is_convertible< It2, It >())>
         map_iterator(map_iterator<It2, F> it)
             : invokable_t<F>(std::move(it.map())),
               _it(std::move(it._it)) { }
         
-        template<REQUIRES(std::is_default_constructible<F>::value)>
+        template<REQUIRES(std::is_default_constructible<F>())>
         map_iterator(map_iterator_sentinel_t<It> sentinel)
             : invokable_t<F>( F{} ), _it(std::move(sentinel._it)) { }
         
@@ -111,16 +111,14 @@ namespace details {
          * BidirectionalIterator operations
          */
         template<REQUIRES(std::is_base_of<std::bidirectional_iterator_tag,
-                                          iterator_category
-                                         >::value)>
+                                          iterator_category>())>
         map_iterator &operator--() {
             --_it;
             return *this;
         }
         
         template<REQUIRES(std::is_base_of<std::bidirectional_iterator_tag,
-                                          iterator_category
-                                         >::value)>
+                                          iterator_category>())>
         map_iterator operator--(int) const {
             map_iterator it = *this;
             --_it;
@@ -128,16 +126,14 @@ namespace details {
         }
         
         template<REQUIRES(std::is_base_of<std::random_access_iterator_tag,
-                                          iterator_category
-                                         >::value)>
+                                          iterator_category>())>
         map_iterator &operator+=(difference_type n) {
             _it += n;
             return *this;
         }
         
         template<REQUIRES(std::is_base_of<std::random_access_iterator_tag,
-                          iterator_category
-                          >::value)>
+                          iterator_category>())>
         map_iterator operator+(difference_type n) const {
             map_iterator it = *this;
             it += n;
@@ -145,24 +141,21 @@ namespace details {
         }
         
         template<REQUIRES(std::is_base_of<std::random_access_iterator_tag,
-                                          iterator_category
-                                         >::value)>
+                                          iterator_category>())>
         friend
         map_iterator operator+(difference_type n, map_iterator const&it) {
             return it + n;
         }
         
         template<REQUIRES(std::is_base_of<std::random_access_iterator_tag,
-                                          iterator_category
-                                         >::value)>
+                                          iterator_category>())>
         map_iterator &operator-=(difference_type n) {
             _it -= n;
             return *this;
         }
         
         template<REQUIRES(std::is_base_of<std::random_access_iterator_tag,
-                                          iterator_category
-                                         >::value)>
+                                          iterator_category>())>
         map_iterator operator-(difference_type n) const {
             map_iterator it = *this;
             it -= n;
@@ -170,43 +163,37 @@ namespace details {
         }
         
         template<REQUIRES(std::is_base_of<std::random_access_iterator_tag,
-                                          iterator_category
-                                         >::value)>
+                                          iterator_category>())>
         difference_type operator-(map_iterator const&other) const {
             return _it - other._it;
         }
         
         template<REQUIRES(std::is_base_of<std::random_access_iterator_tag,
-                                          iterator_category
-                                         >::value)>
+                                          iterator_category>())>
         reference operator[](difference_type n) const {
             return _it[n];
         }
         
         template<REQUIRES(std::is_base_of<std::random_access_iterator_tag,
-                                          iterator_category
-                                         >::value)>
+                                          iterator_category>())>
         bool operator<(map_iterator const& it) const {
             return _it < it._it;
         }
         
         template<REQUIRES(std::is_base_of<std::random_access_iterator_tag,
-                          iterator_category
-                          >::value)>
+                          iterator_category>())>
         bool operator>(map_iterator const& it) const {
             return _it > it._it;
         }
         
         template<REQUIRES(std::is_base_of<std::random_access_iterator_tag,
-                          iterator_category
-                          >::value)>
+                          iterator_category>())>
         bool operator<=(map_iterator const& it) const {
             return _it <= it._it;
         }
         
         template<REQUIRES(std::is_base_of<std::random_access_iterator_tag,
-                          iterator_category
-                          >::value)>
+                          iterator_category>())>
         bool operator>=(map_iterator const& it) const {
             return _it >= it._it;
         }

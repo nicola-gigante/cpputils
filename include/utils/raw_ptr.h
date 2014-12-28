@@ -103,7 +103,7 @@ namespace details {
         // conversion constructors and assignment operators from any
         // convertible pointer type
         template<typename U,
-                 REQUIRES(std::is_convertible<U *, T *>::value)>
+                 REQUIRES(std::is_convertible<U *, T *>())>
         ptr(ptr<U> const&other) : base_t(other._ptr) { }
         
         template<typename U>
@@ -145,10 +145,10 @@ namespace details {
         
         // The specialization for pointers to arrays allows only
         // non-const -> const conversions
-        template<REQUIRES(not std::is_const<T>::value)>
+        template<REQUIRES(neg(std::is_const<T>()))>
         ptr(ptr<const T> const&other) : base_t(other._ptr) { }
         
-        template<REQUIRES(not std::is_const<T>::value)>
+        template<REQUIRES(neg(std::is_const<T>()))>
         ptr(ptr<const T> &&other) {
             std::swap(_ptr, other._ptr);
         }
