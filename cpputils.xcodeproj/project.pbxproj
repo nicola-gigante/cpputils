@@ -33,6 +33,7 @@
 		C9ABB91D19AC6C96009FBA83 /* has_member.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = has_member.h; path = utils/has_member.h; sourceTree = "<group>"; };
 		C9ABB91F19AC80E3009FBA83 /* TODO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.md; sourceTree = "<group>"; };
 		C9AD92871A45C95300736AF9 /* array */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = array; sourceTree = "<group>"; };
+		C9B693711A500E1700A99088 /* raw_ptr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = raw_ptr.h; path = utils/raw_ptr.h; sourceTree = "<group>"; };
 		C9E1D7E619B3203F0058E4C4 /* memory */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = memory; sourceTree = "<group>"; };
 		C9E1D7E719B3203F0058E4C4 /* type_traits */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = type_traits; sourceTree = "<group>"; };
 		C9E1D7E819B3203F0058E4C4 /* utility */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = utility; sourceTree = "<group>"; };
@@ -97,6 +98,7 @@
 				C920055119FE68FC0077099B /* meta.h */,
 				C9AAE77E1A4DBCF80004C6EC /* invoke.h */,
 				C973E75B1A4EB4B0006DA31E /* map_iterator.h */,
+				C9B693711A500E1700A99088 /* raw_ptr.h */,
 			);
 			path = include;
 			sourceTree = SOURCE_ROOT;

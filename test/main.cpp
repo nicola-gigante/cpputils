@@ -18,6 +18,7 @@
 #include "utils/meta.h"
 #include "utils/invoke.h"
 #include "utils/map_iterator.h"
+#include "utils/raw_ptr.h"
 
 #include <std14/array>
 #include <std14/memory>
