@@ -26,6 +26,7 @@
 		C920055119FE68FC0077099B /* meta.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = meta.h; path = utils/meta.h; sourceTree = "<group>"; };
 		C946218E19FFC5480024FA6F /* string_view */ = {isa = PBXFileReference; lastKnownFileType = text; name = string_view; path = experimental/string_view; sourceTree = "<group>"; };
 		C946218F19FFDA150024FA6F /* array_view */ = {isa = PBXFileReference; lastKnownFileType = text; name = array_view; path = experimental/array_view; sourceTree = "<group>"; };
+		C946B7BA1A522ABB00A4C8B0 /* support.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = support.h; path = include/utils/support.h; sourceTree = SOURCE_ROOT; };
 		C973E75B1A4EB4B0006DA31E /* map_iterator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = map_iterator.h; path = utils/map_iterator.h; sourceTree = "<group>"; };
 		C9AAE77E1A4DBCF80004C6EC /* invoke.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = invoke.h; path = utils/invoke.h; sourceTree = "<group>"; };
 		C9ABB90E19AC6B6A009FBA83 /* cpputils */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cpputils; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				C9E1D7E519B3203F0058E4C4 /* std14 */,
+				C946B7BA1A522ABB00A4C8B0 /* support.h */,
 				C9ABB91D19AC6C96009FBA83 /* has_member.h */,
 				C920055119FE68FC0077099B /* meta.h */,
 				C9AAE77E1A4DBCF80004C6EC /* invoke.h */,
