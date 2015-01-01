@@ -80,7 +80,7 @@ namespace STD14 {
             
             template<typename Allocator>
             basic_string_view(std::basic_string<CharT, Traits, Allocator>const& str)
-                noexcept : _data(str.data(), str.size()) { }
+                noexcept : _data(str.data()), _size(str.size()) { }
             
             constexpr basic_string_view(CharT const*str, size_type count)
                 noexcept : _data(str), _size(count) { }
@@ -185,8 +185,7 @@ namespace STD14 {
             {
                 return pos < size() ?
                          basic_string_view(begin() + pos,
-                                           begin() + pos +
-                                             std::min(count, size() - pos) ) :
+                                           std::min(count, size() - pos) ) :
                        throw std::out_of_range("basic_string_view::substr()");
             }
             

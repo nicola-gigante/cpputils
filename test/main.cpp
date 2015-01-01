@@ -19,6 +19,7 @@
 #include "utils/invoke.h"
 #include "utils/map_iterator.h"
 #include "utils/raw_ptr.h"
+#include "utils/string_switch.h"
 
 #include <std14/array>
 #include <std14/memory>
