@@ -19,7 +19,7 @@
 
 #include "meta.h"
 
-#include <utility>
+#include <std14/utility>
 #include <type_traits>
 
 
@@ -135,13 +135,32 @@ namespace details {
     auto invokable(T&& t)
         declreturn( invokable_t<T>( std::forward<T>(t) ) )
     
+    
+    /*
+     * The apply function does the same things as invoke() but accepts arguments
+     * from an std::tuple
+     */
+    template<typename F, typename Tuple, size_t ...Idx>
+    auto apply_impl(F&& f, Tuple&& tuple, std14::index_sequence<Idx...>)
+        declreturn(invoke(std::forward<F>(f),
+                          std::get<Idx>(std::forward<Tuple>(tuple))...))
+    
+    template<typename F, typename Tuple>
+    auto apply(F&& f, Tuple&& tuple)
+        declreturn(apply_impl(std::forward<F>(f),
+                              std::forward<Tuple>(tuple),
+                              std14::make_index_sequence<
+                                std::tuple_size<Tuple>::value
+                              >()))
+    
     #undef declreturn
     
 } // namespace details
     
-using details::invoke;
 using details::invokable;
 using details::invokable_t;
+using details::invoke;
+using details::apply;
     
 } // namespace utils
 

@@ -17,7 +17,6 @@
 #include "utils/has_member.h"
 #include "utils/meta.h"
 #include "utils/invoke.h"
-#include "utils/map_iterator.h"
 #include "utils/raw_ptr.h"
 #include "utils/string_switch.h"
 
