@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef STD14_UTILITY_H__
-#define STD14_UTILITY_H__
+#ifndef STD14_UTILITY_H
+#define STD14_UTILITY_H
 
 #include <utility>
 

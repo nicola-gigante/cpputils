@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef CPPUTILS_RAW_PTR_H__
-#define CPPUTILS_RAW_PTR_H__
+#ifndef CPPUTILS_RAW_PTR_H
+#define CPPUTILS_RAW_PTR_H
 
 #include "meta.h"
 

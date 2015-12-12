@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef STD14_MEMORY_H__
-#define STD14_MEMORY_H__
+#ifndef STD14_MEMORY_H
+#define STD14_MEMORY_H
 
 #include <memory>
 

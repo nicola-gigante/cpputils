@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef CPPUTILS_ARRAY_VIEW_H__
-#define CPPUTILS_ARRAY_VIEW_H__
+#ifndef CPPUTILS_ARRAY_VIEW_H
+#define CPPUTILS_ARRAY_VIEW_H
 
 /*
  * This is a simple array_view class, inspired by llvm::ArrayRef and the

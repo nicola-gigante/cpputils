@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef CPPUTILS_STRING_SWITCH_H__
-#define CPPUTILS_STRING_SWITCH_H__
+#ifndef CPPUTILS_STRING_SWITCH_H
+#define CPPUTILS_STRING_SWITCH_H
 
 #include <cstdint>
 #include <std14/experimental/string_view>

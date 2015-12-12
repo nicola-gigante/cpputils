@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef STD14_TYPE_TRAITS_H__
-#define STD14_TYPE_TRAITS_H__
+#ifndef STD14_TYPE_TRAITS_H
+#define STD14_TYPE_TRAITS_H
 
 #include "utils/invoke.h"
 #include "utils/meta.h"

@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef CPPUTILS_INVOKE_H__
-#define CPPUTILS_INVOKE_H__
+#ifndef CPPUTILS_INVOKE_H
+#define CPPUTILS_INVOKE_H
 
 #include "meta.h"
 

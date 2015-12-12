@@ -7,8 +7,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef CPPUTILS_SUPPORT_H__
-#define CPPUTILS_SUPPORT_H__
+#ifndef CPPUTILS_SUPPORT_H
+#define CPPUTILS_SUPPORT_H
 
 #include <cstdio>
 #include <cstdlib>

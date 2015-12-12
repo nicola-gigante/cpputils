@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef CPPUTILS_META_H__
-#define CPPUTILS_META_H__
+#ifndef CPPUTILS_META_H
+#define CPPUTILS_META_H
 
 #include <type_traits>
 
