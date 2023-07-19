@@ -18,7 +18,7 @@
 #define CPPUTILS_STRING_SWITCH_H
 
 #include <cstdint>
-#include <std14/experimental/string_view>
+#include <string_view>
 
 /*
  * This header declares a little facility to be able to make switch statements
@@ -44,7 +44,7 @@
 namespace utils {
 namespace details
 {
-    using std14::experimental::string_view;
+    using std::string_view;
     
     // FNV-1a constants
     static constexpr uint64_t basis = 14695981039346656037ULL;
